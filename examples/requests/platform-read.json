@@ -1,0 +1,9 @@
+{
+  "id": "demo-platform-001",
+  "domain": "platform",
+  "action": "query",
+  "resource": "synthetic-cluster/network-and-storage-health",
+  "data_classification": "internal",
+  "tool_mode": "read-only",
+  "human_approved": false
+}

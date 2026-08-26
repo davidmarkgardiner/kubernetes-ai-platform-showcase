@@ -1,0 +1,9 @@
+{
+  "id": "demo-compliance-001",
+  "domain": "compliance",
+  "action": "export",
+  "resource": "synthetic-control-evidence",
+  "data_classification": "confidential",
+  "tool_mode": "write-capable",
+  "human_approved": true
+}

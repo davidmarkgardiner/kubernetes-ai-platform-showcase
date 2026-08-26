@@ -1,0 +1,26 @@
+[
+  {
+    "domain": "platform",
+    "claim": "Synthetic CNI health and network policy coverage were inspected through a read-only route.",
+    "citation": "synthetic://platform/network/001",
+    "confidence": "high"
+  },
+  {
+    "domain": "sre",
+    "claim": "A synthetic workload failure was correlated with Kubernetes events and metrics.",
+    "citation": "synthetic://sre/incident/001",
+    "confidence": "high"
+  },
+  {
+    "domain": "compliance",
+    "claim": "A synthetic policy report was mapped to a control statement for human review.",
+    "citation": "synthetic://compliance/control/001",
+    "confidence": "medium"
+  },
+  {
+    "domain": "data",
+    "claim": "A governed synthetic dataset was queried through an allow-listed read-only contract.",
+    "citation": "synthetic://data/query/001",
+    "confidence": "medium"
+  }
+]
