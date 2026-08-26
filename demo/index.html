@@ -69,14 +69,15 @@
         <tr><td><strong>Go policy gate</strong></td><td>Allow read-only queries, deny prohibited exports and route consequential actions to external human review.</td><td><span class="status">Tested</span></td></tr>
         <tr><td><strong>Python evidence router</strong></td><td>Validate citations and confidence, reject secret-like material and group findings by business domain.</td><td><span class="status">Tested</span></td></tr>
         <tr><td><strong>Synthetic domain examples</strong></td><td>Platform, SRE, compliance and data requests without employer or customer material.</td><td><span class="status">Demonstrated</span></td></tr>
-        <tr><td><strong>kagent + agentgateway runtime</strong></td><td>Curated runnable bundle after an explicit component-version and public-safety review.</td><td><span class="status">Next</span></td></tr>
+        <tr><td><strong>kagent + agentgateway runtime</strong></td><td>Disposable Kind bundle with an A2A agent, OpenAI-compatible model route, prompt-policy denial, traces and token metrics.</td><td><span class="status">Runtime tested</span></td></tr>
       </tbody>
     </table>
   </section>
 
   <section class="card">
     <h2>Verification</h2>
-    <p>Run <code>./scripts/verify.sh</code>. The gate passes only when the Go and Python tests, example decisions and repository safety scans all succeed.</p>
+    <p>Run <code>./scripts/verify.sh</code> for the offline checks. Run <code>./scripts/kind-demo-up.sh</code> followed by <code>./scripts/kind-demo-smoke.sh</code> for the Kubernetes integration receipt.</p>
+    <p><strong>Observed:</strong> the synthetic A2A task completed, a disallowed prompt returned HTTP 403, and the successful route emitted a correlated trace plus token metrics.</p>
     <p><strong>Boundary:</strong> this repository demonstrates engineering decisions and synthetic flows. It does not claim autonomous production remediation or expose private implementation details.</p>
   </section>
 

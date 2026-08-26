@@ -1,0 +1,47 @@
+providers:
+  default: openAI
+  openAI:
+    provider: OpenAI
+    model: gpt-4
+    apiKey: dummy
+
+kmcp:
+  enabled: false
+
+kagent-tools:
+  enabled: false
+
+k8s-agent:
+  enabled: false
+kgateway-agent:
+  enabled: false
+istio-agent:
+  enabled: false
+promql-agent:
+  enabled: false
+observability-agent:
+  enabled: false
+argo-rollouts-agent:
+  enabled: false
+helm-agent:
+  enabled: false
+cilium-policy-agent:
+  enabled: false
+cilium-manager-agent:
+  enabled: false
+cilium-debug-agent:
+  enabled: false
+
+grafana-mcp:
+  enabled: false
+querydoc:
+  enabled: false
+
+otel:
+  tracing:
+    enabled: true
+    exporter:
+      otlp:
+        endpoint: http://opentelemetry-collector-traces.telemetry.svc.cluster.local:4317
+        protocol: grpc
+        insecure: true

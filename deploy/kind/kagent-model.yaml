@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: synthetic-agentgateway-key
+  namespace: kagent
+  labels:
+    app.kubernetes.io/part-of: kubernetes-ai-platform-showcase
+type: Opaque
+stringData:
+  AGENTGATEWAY_API_KEY: synthetic-not-a-real-key
+---
+apiVersion: kagent.dev/v1alpha2
+kind: ModelConfig
+metadata:
+  name: agentgateway-synthetic-model
+  namespace: kagent
+  labels:
+    app.kubernetes.io/part-of: kubernetes-ai-platform-showcase
+spec:
+  provider: OpenAI
+  model: gpt-4
+  apiKeySecret: synthetic-agentgateway-key
+  apiKeySecretKey: AGENTGATEWAY_API_KEY
+  openAI:
+    baseUrl: http://agentgateway-proxy.agentgateway-system.svc.cluster.local/v1

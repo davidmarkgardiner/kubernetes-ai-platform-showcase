@@ -8,7 +8,7 @@ The positioning is Kubernetes-first rather than cloud-first. AKS is one substant
 |---|---|---|
 | Cluster and workload lifecycle | Declarative provisioning, onboarding, upgrades and GitOps reconciliation | Kubernetes, KRO, Azure Service Operator, Flux, Argo |
 | Networking | CNI health, policy, ingress/egress, service connectivity and evidence | Cilium, Istio, Nginx, Traefik, network policy |
-| Storage | Storage classes, claims, attachment/health evidence and workload boundaries | CSI, persistent volumes, Longhorn and managed storage patterns |
+| Storage | Storage classes, claims, attachment/health evidence and workload boundaries | Persistent volumes, Longhorn and managed storage patterns |
 | Security and identity | Workload identity, RBAC, policy, admission and least-privilege tool routes | OIDC, RBAC, Kyverno, Gatekeeper, Azure Policy |
 | Observability | Metrics, logs, traces, dashboards, alerts and evidence correlation | Prometheus, Grafana, Alloy, Azure Monitor, Splunk, AppDynamics |
 | Delivery | Repeatable changes, approvals, rollback and proof | GitOps, Flux, Argo Workflows/Events/Rollouts, CI/CD |
@@ -17,8 +17,8 @@ The positioning is Kubernetes-first rather than cloud-first. AKS is one substant
 
 | Concern | Demonstration scope | Typical technologies |
 |---|---|---|
-| Agent composition | Bounded specialists and clear ownership | kagent, agent skills |
-| Model and tool routing | One governed gateway for model, MCP and A2A traffic | agentgateway |
+| Agent composition | Bounded specialists and clear ownership; one synthetic specialist runs in the disposable demonstration | kagent, agent skills |
+| Model and tool routing | One governed gateway for model, MCP and A2A traffic; OpenAI-compatible model routing is runtime-tested locally | agentgateway |
 | Tool integration | Read-only and separately governed write paths | MCP, Kubernetes tools, data and observability tools |
 | Agent collaboration | Typed hand-offs and evidence aggregation | A2A |
 | Evaluation | Evidence, correctness, safety and usefulness gates | deterministic checks, lifecycle evaluations |

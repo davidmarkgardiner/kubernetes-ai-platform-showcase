@@ -13,6 +13,7 @@ This repository is intentionally broader than incident triage and intentionally 
 
 - A dependency-free **Go policy gate** that classifies read-only and consequential AI tool requests, enforces least privilege, requires human approval for mutation, and never executes the action itself.
 - A dependency-free **Python evidence router** that validates synthetic findings, rejects secret-bearing or unsupported inputs, groups evidence by business domain, and labels confidence honestly.
+- A reproducible **disposable Kind runtime** connecting kagent to agentgateway through an OpenAI-compatible route, with a keyless mock model backend, a rejecting prompt guard, OpenTelemetry traces and token metrics.
 - Synthetic examples for platform, SRE, compliance and data workflows.
 - A plain hand-written HTML walkthrough at `demo/index.html`.
 - A capability map and proof register that distinguish implemented, demonstrated, planned and environment-specific work.
@@ -44,6 +45,16 @@ Run the Python evidence router:
 python3 tools/evidence_router.py examples/evidence/synthetic-findings.json
 ```
 
+Run the disposable Kubernetes demonstration:
+
+```bash
+./scripts/kind-demo-up.sh
+./scripts/kind-demo-smoke.sh
+./scripts/kind-demo-down.sh
+```
+
+The smoke test writes a sanitized receipt to `evidence/runtime/kind-showcase-receipt.json`. It proves the local integration path and guard/telemetry behaviour, not production readiness or live-model answer quality. The first setup may take several minutes while images and charts are fetched.
+
 Open the walkthrough:
 
 ```bash
@@ -60,4 +71,4 @@ The operating model is deliberately simple:
 4. **Evaluate** correctness, evidence quality, safety and operational value.
 5. **Adopt** with observability, onboarding, rollback and clear ownership.
 
-See [the capability map](docs/capability-map.md), [case studies](docs/case-studies.md) and [proof register](docs/proof-register.md).
+See [the capability map](docs/capability-map.md), [case studies](docs/case-studies.md), [runtime demonstration](docs/runtime-demo.md) and [proof register](docs/proof-register.md).

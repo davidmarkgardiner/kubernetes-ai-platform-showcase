@@ -1,0 +1,27 @@
+apiVersion: kagent.dev/v1alpha2
+kind: Agent
+metadata:
+  name: platform-evidence-specialist
+  namespace: kagent
+  labels:
+    app.kubernetes.io/part-of: kubernetes-ai-platform-showcase
+spec:
+  description: Synthetic read-only platform evidence specialist for the private showcase.
+  type: Declarative
+  declarative:
+    modelConfig: agentgateway-synthetic-model
+    stream: false
+    systemMessage: >-
+      You are a synthetic platform evidence specialist. Return a concise readiness
+      summary based only on the supplied synthetic scenario. Do not propose or
+      perform a consequential action.
+    a2aConfig:
+      skills:
+        - id: synthetic-platform-readiness
+          name: Synthetic platform readiness
+          description: Summarise a synthetic Kubernetes platform readiness scenario.
+          inputModes: [text]
+          outputModes: [text]
+          tags: [kubernetes, evidence, synthetic]
+          examples:
+            - Summarise the synthetic platform readiness evidence.

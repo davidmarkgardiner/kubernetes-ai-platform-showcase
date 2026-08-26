@@ -1,0 +1,108 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: agentgateway-proxy
+  namespace: agentgateway-system
+  labels:
+    app.kubernetes.io/part-of: kubernetes-ai-platform-showcase
+spec:
+  gatewayClassName: agentgateway
+  listeners:
+    - name: http
+      protocol: HTTP
+      port: 80
+      allowedRoutes:
+        namespaces:
+          from: All
+---
+apiVersion: agentgateway.dev/v1alpha1
+kind: AgentgatewayBackend
+metadata:
+  name: synthetic-llm
+  namespace: agentgateway-system
+  labels:
+    app.kubernetes.io/part-of: kubernetes-ai-platform-showcase
+spec:
+  ai:
+    provider:
+      openai:
+        model: gpt-4
+      host: httpbun.showcase-model.svc.cluster.local
+      port: 3090
+      path: /llm/chat/completions
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: synthetic-llm
+  namespace: agentgateway-system
+  labels:
+    app.kubernetes.io/part-of: kubernetes-ai-platform-showcase
+spec:
+  parentRefs:
+    - name: agentgateway-proxy
+      namespace: agentgateway-system
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /v1/chat/completions
+      backendRefs:
+        - name: synthetic-llm
+          namespace: agentgateway-system
+          group: agentgateway.dev
+          kind: AgentgatewayBackend
+---
+apiVersion: agentgateway.dev/v1alpha1
+kind: AgentgatewayPolicy
+metadata:
+  name: synthetic-prompt-guard
+  namespace: agentgateway-system
+  labels:
+    app.kubernetes.io/part-of: kubernetes-ai-platform-showcase
+spec:
+  targetRefs:
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      name: synthetic-llm
+  backend:
+    ai:
+      promptGuard:
+        request:
+          - regex:
+              action: Reject
+              matches:
+                - email
+            response:
+              message: Rejected by the synthetic data-boundary policy
+---
+apiVersion: agentgateway.dev/v1alpha1
+kind: AgentgatewayPolicy
+metadata:
+  name: showcase-tracing
+  namespace: agentgateway-system
+  labels:
+    app.kubernetes.io/part-of: kubernetes-ai-platform-showcase
+spec:
+  targetRefs:
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: agentgateway-proxy
+  frontend:
+    tracing:
+      backendRef:
+        name: opentelemetry-collector-traces
+        namespace: telemetry
+        port: 4317
+      protocol: GRPC
+      clientSampling: "true"
+      randomSampling: "true"
+      resources:
+        - name: deployment.environment.name
+          expression: '"synthetic-showcase"'
+        - name: service.version
+          expression: '"1"'
+      attributes:
+        add:
+          - name: showcase
+            expression: '"kubernetes-ai-platform"'

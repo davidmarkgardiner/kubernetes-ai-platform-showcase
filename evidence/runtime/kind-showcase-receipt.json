@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "verified_at": "2026-08-26T08:33:45Z",
+  "environment": "disposable local Kind cluster",
+  "data_classification": "synthetic only",
+  "components": {
+    "kagent": "0.9.9",
+    "agentgateway": "1.4.0",
+    "model_backend": "keyless deterministic httpbun mock"
+  },
+  "checks": {
+    "gateway_route_accepted": true,
+    "kagent_model_config_accepted": true,
+    "kagent_agent_ready": true,
+    "openai_compatible_route_status": 200,
+    "prompt_guard_denial_status": 403,
+    "a2a_task_state": "completed",
+    "trace_exported": true,
+    "token_metrics_present": true
+  },
+  "trace": {
+    "id": "88f56a62d08e4fb32684ac805f5bb645",
+    "scope": "disposable synthetic run"
+  },
+  "claims": {
+    "proves": [
+      "Kagent A2A request reaches Agentgateway through an OpenAI-compatible route",
+      "Agentgateway enforces the configured prompt guard",
+      "The request emits trace and token telemetry"
+    ],
+    "does_not_prove": [
+      "production readiness",
+      "live-model answer quality",
+      "employer or customer deployment"
+    ]
+  },
+  "sanitized": true
+}
