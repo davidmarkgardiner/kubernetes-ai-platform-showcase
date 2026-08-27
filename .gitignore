@@ -3,3 +3,4 @@ __pycache__/
 *.pyc
 /policy-gate
 coverage.out
+policy_evidence/out/

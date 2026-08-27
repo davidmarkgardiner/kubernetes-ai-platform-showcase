@@ -1,0 +1,13 @@
+{
+  "plan_id": "synthetic-plan-001",
+  "identity_id": "synthetic-agent-compliance-reader",
+  "calls": [
+    {"tool": "policy.definitions.list", "scope_id": "synthetic-scope-platform"},
+    {"tool": "policy.initiatives.list", "scope_id": "synthetic-scope-platform"},
+    {"tool": "policy.compliance.list", "scope_id": "synthetic-scope-platform"},
+    {"tool": "policy.remediations.list", "scope_id": "synthetic-scope-platform"},
+    {"tool": "policy.compliance.list", "scope_id": "synthetic-scope-platform"},
+    {"tool": "policy.remediation.invoke", "scope_id": "synthetic-scope-platform"}
+  ]
+}
+

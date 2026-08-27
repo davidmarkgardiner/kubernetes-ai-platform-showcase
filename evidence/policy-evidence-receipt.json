@@ -1,0 +1,40 @@
+{
+  "receipt_version": 1,
+  "verified_at": "2026-08-27",
+  "scope": "private local synthetic Azure Policy-shaped evidence workflow",
+  "commit": null,
+  "commands": [
+    "python3 -m unittest tests.test_policy_evidence",
+    "python3 -m policy_evidence.cli",
+    "./scripts/verify.sh"
+  ],
+  "results": {
+    "focused_tests": "11 passed",
+    "repository_verify": "SHOWCASE_VERIFY_OK",
+    "run_id": "synthetic-run-001",
+    "fixture_sha256": "b91ee329d8a9b0f62d899a802ba9cf1e5820d40a1b6b8e513b17f603d190883d",
+    "read_calls": 5,
+    "gateway_denials": 1,
+    "plan_deviations": 0,
+    "successful_writes": 0
+  },
+  "evaluations": {
+    "E1_schema_and_references": "PASS",
+    "E2_provenance": "PASS",
+    "E3_read_only_invariant": "PASS",
+    "E4_denial_exercised": "PASS",
+    "E5_identity_enforcement": "PASS",
+    "E6_gateway_bypass_resistance": "PASS",
+    "E7_plan_adherence": "PASS",
+    "E8_trace_correlation": "PASS",
+    "E9_repeatability": "PASS",
+    "E10_synthetic_guard": "PASS",
+    "E11_enforced_offline_boundary": "NOT_PROVEN"
+  },
+  "limitations": [
+    "No Azure tenant, Azure Policy API, Entra identity, kagent, agentgateway or model was used.",
+    "The workflow demonstrates local engineering controls, not Azure semantic fidelity or a customer outcome.",
+    "The repository verifier ran without cloud credentials, but host-enforced network isolation was not established.",
+    "No external showing, publication or deployment is authorized by this receipt."
+  ]
+}

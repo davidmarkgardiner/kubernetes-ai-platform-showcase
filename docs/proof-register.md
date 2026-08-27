@@ -7,6 +7,10 @@ This register prevents architecture and ambition from being presented as runtime
 | Least-privilege domain/action policy | Implemented and tested | `internal/policy`, `go test ./...` |
 | Human review before consequential action | Implemented as a decision contract | policy tests; execution is deliberately external |
 | Confidential compliance export denial | Implemented and tested | `TestConfidentialExportDenied` |
+| Synthetic Azure Policy-shaped evidence workflow | Implemented and tested locally | `policy_evidence/`, `tests/test_policy_evidence.py`, `evidence/policy-evidence-receipt.json` |
+| Pre-dispatch plan deviation and write denial | Implemented and tested locally | deviation creates zero downstream calls; planned write returns 403 before adapter invocation |
+| Fixture identity, scope and reference integrity | Implemented and tested locally | closed schemas, code-owned identity contract, orphan/tamper negative tests |
+| Host-enforced no-network execution for policy workflow | Not proven | ordinary offline execution passed; an enforced isolation receipt is still required |
 | Cross-domain evidence validation | Implemented and tested | `tools/evidence_router.py`, Python tests |
 | Secret-like input rejection | Implemented and tested | `test_rejects_secret_like_content` |
 | Platform, SRE, compliance and data examples | Synthetic demonstration | `examples/`, `docs/case-studies.md` |

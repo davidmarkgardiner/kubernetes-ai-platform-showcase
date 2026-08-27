@@ -17,6 +17,7 @@ This repository is intentionally broader than incident triage and intentionally 
 - Synthetic examples for platform, SRE, compliance and data workflows.
 - A plain hand-written HTML walkthrough at `demo/index.html`.
 - A capability map and proof register that distinguish implemented, demonstrated, planned and environment-specific work.
+- A deterministic, model-free **Azure Policy compliance evidence assistant** that validates closed synthetic fixtures, enforces identity and scope through a static read-only gateway, records a planned write denial, and emits repeatable evidence and traces.
 
 ## What this repository does not claim
 
@@ -44,6 +45,15 @@ Run the Python evidence router:
 ```bash
 python3 tools/evidence_router.py examples/evidence/synthetic-findings.json
 ```
+
+Run the synthetic Azure Policy-shaped evidence workflow:
+
+```bash
+python3 -m policy_evidence.cli
+python3 -m unittest tests.test_policy_evidence
+```
+
+This local pattern does not connect to Azure or use an LLM. Its receipt records E1–E10 as locally tested and keeps enforced no-network isolation as `NOT_PROVEN`.
 
 Run the disposable Kubernetes demonstration:
 

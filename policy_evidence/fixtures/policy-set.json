@@ -1,0 +1,59 @@
+{
+  "manifest": {
+    "fixture_set_version": 1,
+    "synthetic": true,
+    "run_id": "synthetic-run-001"
+  },
+  "identities": [
+    {
+      "id": "synthetic-agent-compliance-reader",
+      "granted_scopes": ["synthetic-scope-platform"],
+      "denied_scopes": ["synthetic-scope-restricted"]
+    }
+  ],
+  "definitions": [
+    {
+      "id": "synthetic-def-001",
+      "display_name": "Require approved container registry",
+      "effect": "audit"
+    },
+    {
+      "id": "synthetic-def-002",
+      "display_name": "Require workload identity",
+      "effect": "audit"
+    }
+  ],
+  "initiatives": [
+    {
+      "id": "synthetic-init-001",
+      "definition_ids": ["synthetic-def-001", "synthetic-def-002"]
+    }
+  ],
+  "compliance_states": [
+    {
+      "id": "synthetic-control-001",
+      "definition_id": "synthetic-def-001",
+      "initiative_id": "synthetic-init-001",
+      "scope_id": "synthetic-scope-platform",
+      "resource_id": "synthetic-resource-aks-a",
+      "state": "NonCompliant"
+    },
+    {
+      "id": "synthetic-control-002",
+      "definition_id": "synthetic-def-002",
+      "initiative_id": "synthetic-init-001",
+      "scope_id": "synthetic-scope-platform",
+      "resource_id": "synthetic-resource-aks-a",
+      "state": "Compliant"
+    }
+  ],
+  "remediations": [
+    {
+      "id": "synthetic-remediation-001",
+      "definition_id": "synthetic-def-001",
+      "scope_id": "synthetic-scope-platform",
+      "status": "NotStarted"
+    }
+  ]
+}
+
