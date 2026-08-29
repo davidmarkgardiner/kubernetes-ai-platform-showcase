@@ -1,6 +1,6 @@
 # Kubernetes + AI Platform Showcase
 
-Private working repository for a concise, defensible demonstration of David Gardiner's Kubernetes and AI platform work.
+Evidence-led demonstration of David Gardiner's Kubernetes platform engineering and governed AI integration work.
 
 Licensed under the [Apache License 2.0](LICENSE).
 
