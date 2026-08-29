@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "1.0",
+  "scope": "sanitized-platform-factory",
+  "result": "PASS",
+  "checks": [
+    {
+      "capability": "KRO TeamEnvironment composition",
+      "status": "STRUCTURALLY_VERIFIED",
+      "runtime": "run scripts/platform-factory-kind-smoke.sh for local proof"
+    },
+    {
+      "capability": "KRO plus Azure Service Operator cluster blueprint",
+      "status": "STRUCTURALLY_VERIFIED",
+      "runtime": "NOT_PROVEN; definition is never applied"
+    },
+    {
+      "capability": "Flux pull-based reconciliation",
+      "status": "STRUCTURALLY_VERIFIED",
+      "runtime": "NOT_PROVEN; example source is inert"
+    },
+    {
+      "capability": "External Secrets integration",
+      "status": "STRUCTURALLY_VERIFIED",
+      "runtime": "NOT_PROVEN; fake provider only"
+    },
+    {
+      "capability": "Kyverno ownership guardrail",
+      "status": "STRUCTURALLY_VERIFIED",
+      "runtime": "NOT_PROVEN in this receipt"
+    },
+    {
+      "capability": "No Azure cluster instance or cloud identifiers",
+      "status": "VERIFIED",
+      "runtime": "not applicable"
+    }
+  ]
+}

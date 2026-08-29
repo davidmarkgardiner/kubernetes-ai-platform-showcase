@@ -1,0 +1,12 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: platform-fleet
+  namespace: flux-system
+  annotations:
+    showcase.platform.example.com/status: inert-example-source
+spec:
+  interval: 10m
+  ref:
+    branch: main
+  url: https://github.com/example/platform-fleet.git

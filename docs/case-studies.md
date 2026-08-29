@@ -39,3 +39,13 @@
 **Pattern:** approved work enters an isolated workspace, deterministic code owns the lifecycle, agents work inside bounded phases, and durable evidence records requested/actual routes, tests, reviews, PRs and CI. Merge and deployment remain policy-bound.
 
 **Status:** supported by existing private working programmes; a future synthetic run receipt will be curated into this repository.
+
+## 6. GitOps-first cluster and application delivery
+
+**Problem:** push-oriented CI/CD pipelines accumulated credentials and imperative orchestration, took too long to run and generally created or changed one cluster at a time. Application onboarding also required repeated platform-team intervention for namespaces and baseline controls.
+
+**Pattern:** expose small KRO APIs backed by operator-owned resources. Azure Service Operator expresses the cloud resource graph; Flux continuously pulls cluster and application desired state; External Secrets separates secret references from workloads; Kyverno applies admission guardrails. A team request composes its namespace, quota, limits, service account and network boundary consistently.
+
+**Value:** the pattern removes duplicated pipeline stages, supports parallel declarative reconciliation, corrects drift and turns onboarding into a reviewed Git change. It also gives the platform team one reusable control point instead of bespoke per-team work.
+
+**Status:** the safe `TeamEnvironment` composition is runtime-tested on disposable Kind. The ASO, Flux, External Secrets and Kyverno integration manifests are structurally verified examples; their controller and Azure runtime are not claimed here.

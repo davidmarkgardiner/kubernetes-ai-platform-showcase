@@ -1,0 +1,76 @@
+apiVersion: kro.run/v1alpha1
+kind: ResourceGraphDefinition
+metadata:
+  name: team-environment
+  annotations:
+    showcase.platform.example.com/proof: local-safe-composition
+spec:
+  schema:
+    apiVersion: v1alpha1
+    group: platform.example.com
+    kind: TeamEnvironment
+    spec:
+      name: string | required=true
+      owner: string | required=true
+      cpuLimit: string | default="2"
+      memoryLimit: string | default="4Gi"
+  resources:
+    - id: teamNamespace
+      template:
+        apiVersion: v1
+        kind: Namespace
+        metadata:
+          name: ${schema.spec.name}
+          labels:
+            platform.example.com/managed: "true"
+            platform.example.com/owner: ${schema.spec.owner}
+    - id: resourceQuota
+      template:
+        apiVersion: v1
+        kind: ResourceQuota
+        metadata:
+          name: team-budget
+          namespace: ${schema.spec.name}
+        spec:
+          hard:
+            requests.cpu: ${schema.spec.cpuLimit}
+            requests.memory: ${schema.spec.memoryLimit}
+            limits.cpu: ${schema.spec.cpuLimit}
+            limits.memory: ${schema.spec.memoryLimit}
+    - id: defaultLimits
+      template:
+        apiVersion: v1
+        kind: LimitRange
+        metadata:
+          name: workload-defaults
+          namespace: ${schema.spec.name}
+        spec:
+          limits:
+            - type: Container
+              defaultRequest:
+                cpu: 100m
+                memory: 128Mi
+              default:
+                cpu: 500m
+                memory: 512Mi
+    - id: defaultServiceAccount
+      template:
+        apiVersion: v1
+        kind: ServiceAccount
+        metadata:
+          name: workload
+          namespace: ${schema.spec.name}
+          annotations:
+            showcase.platform.example.com/workload-identity: not-configured-in-local-demo
+    - id: defaultDenyNetworkPolicy
+      template:
+        apiVersion: networking.k8s.io/v1
+        kind: NetworkPolicy
+        metadata:
+          name: default-deny
+          namespace: ${schema.spec.name}
+        spec:
+          podSelector: {}
+          policyTypes:
+            - Ingress
+            - Egress

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0",
+  "verifiedAt": "2026-08-29T12:11:56Z",
+  "cluster": "disposable-kind",
+  "kroVersion": "0.9.3",
+  "rbacMode": "aggregation",
+  "result": "PASS",
+  "observedResources": [
+    "Namespace/team-demo",
+    "ResourceQuota/team-demo/team-budget",
+    "LimitRange/team-demo/workload-defaults",
+    "ServiceAccount/team-demo/workload",
+    "NetworkPolicy/team-demo/default-deny"
+  ],
+  "azureBlueprintApplied": false,
+  "azureRuntime": "NOT_PROVEN",
+  "fluxRuntime": "NOT_PROVEN",
+  "externalSecretsRuntime": "NOT_PROVEN",
+  "kyvernoRuntime": "NOT_PROVEN"
+}

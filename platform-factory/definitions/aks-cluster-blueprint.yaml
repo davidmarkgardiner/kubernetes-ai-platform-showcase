@@ -1,0 +1,55 @@
+apiVersion: kro.run/v1alpha1
+kind: ResourceGraphDefinition
+metadata:
+  name: azure-kubernetes-cluster-blueprint
+  annotations:
+    showcase.platform.example.com/proof: definition-only-not-applied
+spec:
+  schema:
+    apiVersion: v1alpha1
+    group: platform.example.com
+    kind: AzureKubernetesCluster
+    spec:
+      name: string | required=true
+      location: string | default="northeurope"
+      kubernetesVersion: string | required=true
+      dnsServiceIP: string | default="10.0.0.10"
+      serviceCIDR: string | default="10.0.0.0/16"
+  resources:
+    - id: resourceGroup
+      template:
+        apiVersion: resources.azure.com/v1api20200601
+        kind: ResourceGroup
+        metadata:
+          name: ${schema.spec.name}
+        spec:
+          location: ${schema.spec.location}
+    - id: managedCluster
+      template:
+        apiVersion: containerservice.azure.com/v1api20240901
+        kind: ManagedCluster
+        metadata:
+          name: ${schema.spec.name}
+        spec:
+          location: ${schema.spec.location}
+          owner:
+            name: ${resourceGroup.metadata.name}
+          kubernetesVersion: ${schema.spec.kubernetesVersion}
+          dnsPrefix: ${schema.spec.name}
+          identity:
+            type: SystemAssigned
+          networkProfile:
+            networkPlugin: azure
+            networkPolicy: cilium
+            networkPluginMode: overlay
+            dnsServiceIP: ${schema.spec.dnsServiceIP}
+            serviceCidr: ${schema.spec.serviceCIDR}
+          oidcIssuerProfile:
+            enabled: true
+          securityProfile:
+            workloadIdentity:
+              enabled: true
+
+# Deliberately no AzureKubernetesCluster instance is stored in this repository.
+# Applying an instance could create chargeable Azure resources and requires a
+# separately reviewed configuration and explicit human approval.

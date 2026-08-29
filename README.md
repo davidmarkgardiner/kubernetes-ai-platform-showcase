@@ -14,6 +14,8 @@ This repository is intentionally broader than incident triage and intentionally 
 - A dependency-free **Go policy gate** that classifies read-only and consequential AI tool requests, enforces least privilege, requires human approval for mutation, and never executes the action itself.
 - A dependency-free **Python evidence router** that validates synthetic findings, rejects secret-bearing or unsupported inputs, groups evidence by business domain, and labels confidence honestly.
 - A reproducible **disposable Kind runtime** connecting kagent to agentgateway through an OpenAI-compatible route, with a keyless mock model backend, a rejecting prompt guard, OpenTelemetry traces and token metrics.
+- A sanitised **GitOps platform-factory slice** showing KRO compositions, Azure Service Operator resource definitions, Flux reconciliation, External Secrets and Kyverno guardrails without cloud credentials or a provisionable cluster instance.
+- A second disposable Kind proof for the safe self-service path: one `TeamEnvironment` request reconciles a namespace, quota, limits, workload service account and default-deny network policy.
 - Synthetic examples for platform, SRE, compliance and data workflows.
 - A plain hand-written HTML walkthrough at `demo/index.html`.
 - A capability map and proof register that distinguish implemented, demonstrated, planned and environment-specific work.
@@ -65,6 +67,20 @@ Run the disposable Kubernetes demonstration:
 
 The smoke test writes a sanitized receipt to `evidence/runtime/kind-showcase-receipt.json`. It proves the local integration path and guard/telemetry behaviour, not production readiness or live-model answer quality. The first setup may take several minutes while images and charts are fetched.
 
+Verify the GitOps platform-factory definitions:
+
+```bash
+python3 scripts/verify-platform-factory.py
+```
+
+Reproduce the runtime-tested KRO team-onboarding composition on disposable Kind:
+
+```bash
+./scripts/platform-factory-kind-smoke.sh
+```
+
+This path never applies the Azure blueprint. Azure provisioning and Flux, External Secrets and Kyverno controller reconciliation remain explicitly not proven by that local receipt.
+
 Open the walkthrough:
 
 ```bash
@@ -81,4 +97,4 @@ The operating model is deliberately simple:
 4. **Evaluate** correctness, evidence quality, safety and operational value.
 5. **Adopt** with observability, onboarding, rollback and clear ownership.
 
-See [the capability map](docs/capability-map.md), [case studies](docs/case-studies.md), [runtime demonstration](docs/runtime-demo.md) and [proof register](docs/proof-register.md).
+See [the capability map](docs/capability-map.md), [case studies](docs/case-studies.md), [GitOps platform factory](platform-factory/README.md), [runtime demonstration](docs/runtime-demo.md) and [proof register](docs/proof-register.md).

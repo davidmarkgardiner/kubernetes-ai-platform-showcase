@@ -1,0 +1,9 @@
+apiVersion: platform.example.com/v1alpha1
+kind: TeamEnvironment
+metadata:
+  name: demo-team
+spec:
+  name: team-demo
+  owner: showcase
+  cpuLimit: "2"
+  memoryLimit: 4Gi

@@ -9,8 +9,10 @@ python3 -m unittest discover -s tests -p 'test_*.py'
 for script in scripts/*.sh; do bash -n "$script"; done
 python3 tools/evidence_router.py examples/evidence/synthetic-findings.json >/dev/null
 python3 -m policy_evidence.cli >/dev/null
+python3 scripts/verify-platform-factory.py >/dev/null
 test -s policy_evidence/out/bundle.json
 test -s policy_evidence/out/trace.jsonl
+test -s evidence/platform-factory-receipt.json
 go run ./cmd/policy-gate ./examples/requests/platform-read.json | grep -q 'allow-read-only'
 go run ./cmd/policy-gate ./examples/requests/compliance-export.json | grep -q '"decision": "deny"'
 

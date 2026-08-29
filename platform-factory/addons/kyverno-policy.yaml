@@ -1,0 +1,25 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-team-namespace-owner
+  annotations:
+    policies.kyverno.io/title: Require ownership on team namespaces
+    showcase.platform.example.com/scope: synthetic-demo
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: require-owner-label
+      match:
+        any:
+          - resources:
+              kinds:
+                - Namespace
+              names:
+                - team-*
+      validate:
+        message: Team namespaces must name an accountable owner.
+        pattern:
+          metadata:
+            labels:
+              platform.example.com/owner: "?*"

@@ -71,6 +71,7 @@
         <tr><td><strong>Policy evidence assistant</strong></td><td>Turn closed Azure Policy-shaped fixtures into deterministic evidence through identity checks, a pre-dispatch plan comparator and a read-only gateway.</td><td><span class="status">Locally tested</span></td></tr>
         <tr><td><strong>Synthetic domain examples</strong></td><td>Platform, SRE, compliance and data requests without employer or customer material.</td><td><span class="status">Demonstrated</span></td></tr>
         <tr><td><strong>kagent + agentgateway runtime</strong></td><td>Disposable Kind bundle with an A2A agent, OpenAI-compatible model route, prompt-policy denial, traces and token metrics.</td><td><span class="status">Runtime tested</span></td></tr>
+        <tr><td><strong>GitOps platform factory</strong></td><td>Runtime-tested KRO self-service composition plus sanitised ASO, Flux, External Secrets and Kyverno integration definitions.</td><td><span class="status">Bounded proof</span></td></tr>
       </tbody>
     </table>
   </section>
@@ -79,6 +80,7 @@
     <h2>Verification</h2>
     <p>Run <code>./scripts/verify.sh</code> for the offline checks. Run <code>./scripts/kind-demo-up.sh</code> followed by <code>./scripts/kind-demo-smoke.sh</code> for the Kubernetes integration receipt.</p>
     <p><strong>Observed:</strong> the synthetic A2A task completed, a disallowed prompt returned HTTP 403, and the successful route emitted a correlated trace plus token metrics.</p>
+    <p><strong>Platform-factory proof:</strong> the safe local path composes a team namespace, quota, defaults, workload service account and default-deny network policy. The Azure blueprint has no instance and is never applied by the verifier or local smoke test.</p>
     <p><strong>Boundary:</strong> this repository demonstrates engineering decisions and synthetic flows. It does not claim autonomous production remediation or expose private implementation details.</p>
     <p><strong>Policy pattern:</strong> the model-free local workflow passes its core schema, provenance, identity, bypass, denial and repeatability tests. Host-enforced network isolation remains explicitly not proven.</p>
   </section>
