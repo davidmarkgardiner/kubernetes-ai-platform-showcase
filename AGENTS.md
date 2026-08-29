@@ -1,6 +1,6 @@
 # Repository safety and evidence rules
 
-This is a private, sanitized showcase that may later be considered for public release.
+This is a public, sanitized showcase. Every change must remain safe for public release.
 
 - Never add employer names, customer names, private hostnames, tenant/subscription IDs, internal URLs, production data or credentials.
 - Use synthetic fixtures and explicit placeholders only.

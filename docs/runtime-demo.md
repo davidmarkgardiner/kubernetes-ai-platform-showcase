@@ -1,12 +1,12 @@
-# Disposable kagent + agentgateway runtime
+# Isolated kagent + agentgateway reference runtime
 
 ## Purpose
 
-This bundle turns the architectural claim into a small reproducible integration test without using a commercial model key, employer environment or customer data.
+This bundle turns the architectural claim into a reproducible public integration test without using a commercial model key, employer environment or customer data.
 
 ```text
 A2A client
-  -> kagent synthetic specialist
+  -> kagent safe-fixture specialist
   -> OpenAI-compatible ModelConfig
   -> agentgateway Gateway + HTTPRoute
   -> AgentgatewayPolicy prompt guard
@@ -16,12 +16,12 @@ A2A client
 
 ## Exact test boundary
 
-- Kind provides an isolated disposable Kubernetes cluster.
+- Kind provides the isolated Kubernetes reference environment.
 - kagent `0.9.9` exposes one declarative A2A agent.
 - agentgateway `1.4.0` owns the model route, policy and telemetry.
 - The backend is a pinned httpbun image returning a deterministic OpenAI-shaped response.
-- The allowed synthetic request completes through A2A.
-- A request containing the blocked term is rejected with HTTP 403.
+- The allowed safe-fixture request completes through A2A.
+- A request containing the blocked term is denied before the restricted route can run.
 - The successful request produces a correlated trace and token-usage metrics.
 
 Run:
@@ -38,6 +38,6 @@ The first integration attempt configured kagent as an Ollama client. That reache
 
 ## Limitations
 
-This proves component wiring, A2A transport, routing, policy denial and telemetry in a local disposable cluster. It does not evaluate model reasoning, multi-cluster access, production availability, enterprise identity, persistent storage or a deployment in any employer/customer environment.
+This proves component wiring, A2A transport, routing, policy denial and telemetry in an isolated public reference environment. It does not evaluate model reasoning, multi-cluster access, production availability, enterprise identity, persistent storage or a deployment in any employer/customer environment.
 
 The component shape follows the official [kagent BYO Agentgateway guide](https://kagent.dev/docs/kagent/supported-providers/byo-agentgateway/) and [agentgateway Kubernetes installation guide](https://agentgateway.dev/docs/kubernetes/main/quickstart/install/).

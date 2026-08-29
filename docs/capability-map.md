@@ -19,18 +19,18 @@ The positioning is Kubernetes-first rather than cloud-first. AKS is one substant
 |---|---|---|
 | Cluster API | Large push pipelines duplicated orchestration and handled one environment at a time | A small KRO API composes ASO resource definitions; no Azure instance is included or applied |
 | Pull reconciliation | Pipeline credentials and job ordering made delivery slow and fragile | Flux sources and ordered Kustomizations express continuous reconciliation, pruning and health waits |
-| Team onboarding | Platform teams repeatedly hand-built namespaces and baseline controls | A locally runnable `TeamEnvironment` composes quota, limits, service account and default-deny networking |
-| Secrets | Applications should not carry secret values through Git | External Secrets uses a fake synthetic provider here to demonstrate the contract without a real secret backend |
+| Team onboarding | Platform teams repeatedly hand-built namespaces and baseline controls | An isolated `TeamEnvironment` reference composes quota, limits, service account and default-deny networking |
+| Secrets | Applications should not carry secret values through Git | External Secrets uses a public-safe fake provider here to demonstrate the contract without a real secret backend |
 | Guardrails | Baseline ownership and security controls need consistent enforcement | A Kyverno policy requires accountable ownership on team namespaces |
 
-The slice demonstrates the operator-based design and its consumer experience. The proof register distinguishes local reconciliation from definition-only integrations.
+The slice demonstrates the operator-based design and its consumer experience. The proof register distinguishes isolated reference reconciliation from definition-only integrations.
 
 ## AI integration platform
 
 | Concern | Demonstration scope | Typical technologies |
 |---|---|---|
-| Agent composition | Bounded specialists and clear ownership; one synthetic specialist runs in the disposable demonstration | kagent, agent skills |
-| Model and tool routing | One governed gateway for model, MCP and A2A traffic; OpenAI-compatible model routing is runtime-tested locally | agentgateway |
+| Agent composition | Bounded specialists and clear ownership; one safe-fixture specialist runs in the isolated reference | kagent, agent skills |
+| Model and tool routing | One governed gateway for model, MCP and A2A traffic; OpenAI-compatible model routing is runtime-tested in the public reference | agentgateway |
 | Tool integration | Read-only and separately governed write paths | MCP, Kubernetes tools, data and observability tools |
 | Agent collaboration | Typed hand-offs and evidence aggregation | A2A |
 | Evaluation | Evidence, correctness, safety and usefulness gates | deterministic checks, lifecycle evaluations |

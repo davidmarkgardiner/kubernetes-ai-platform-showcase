@@ -6,7 +6,7 @@
 
 **Pattern:** kagent specialists gather evidence through read-only tools, exchange typed context through A2A and return a cited diagnosis and remediation proposal. agentgateway governs model and tool routing. Consequential action remains a separate approved GitOps workflow.
 
-**Status:** underlying patterns have existing sanitized and private evidence; this repository provides a curated demonstration, not a production claim.
+**Status:** delivered enterprise capability is described at outcome level; this repository publishes only the reusable pattern and safe reference implementation.
 
 ## 2. Platform engineering assistant
 
@@ -20,9 +20,9 @@
 
 **Problem:** control owners spend time locating policy reports and translating technical evidence into reviewable control statements.
 
-**Pattern:** read-only collectors retrieve allow-listed synthetic policy evidence, the evidence router labels confidence and citations, and a human control owner approves the interpretation. Confidential export is denied by the example policy.
+**Pattern:** read-only collectors retrieve allow-listed policy-shaped fixture evidence, the evidence router labels confidence and citations, and a human control owner approves the interpretation. Confidential export is denied by the example policy.
 
-**Status:** synthetic cross-functional demonstration implemented here; no claim of a deployed compliance product.
+**Status:** the governed control pattern is implemented in this public reference; confidential production integrations and data are not published here.
 
 ## 4. Governed data assistant
 
@@ -38,7 +38,7 @@
 
 **Pattern:** approved work enters an isolated workspace, deterministic code owns the lifecycle, agents work inside bounded phases, and durable evidence records requested/actual routes, tests, reviews, PRs and CI. Merge and deployment remain policy-bound.
 
-**Status:** supported by existing private working programmes; a future synthetic run receipt will be curated into this repository.
+**Status:** supported by private delivery programmes; this repository is limited to reusable public-safe patterns and does not publish confidential run evidence.
 
 ## 6. GitOps-first cluster and application delivery
 
@@ -48,4 +48,4 @@
 
 **Value:** the pattern removes duplicated pipeline stages, supports parallel declarative reconciliation, corrects drift and turns onboarding into a reviewed Git change. It also gives the platform team one reusable control point instead of bespoke per-team work.
 
-**Status:** the safe `TeamEnvironment` composition is runtime-tested on disposable Kind. The ASO, Flux, External Secrets and Kyverno integration manifests are structurally verified examples; their controller and Azure runtime are not claimed here.
+**Status:** the safe `TeamEnvironment` composition is runtime-tested in an isolated Kubernetes reference environment. The ASO, Flux, External Secrets and Kyverno integration manifests are structurally verified examples; confidential fleet configuration and cloud runtime evidence are not published here.
