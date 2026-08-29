@@ -2,6 +2,8 @@
 
 Private working repository for a concise, defensible demonstration of David Gardiner's Kubernetes and AI platform work.
 
+Licensed under the [Apache License 2.0](LICENSE).
+
 This repository is intentionally broader than incident triage and intentionally not tied to one cloud. It shows how governed AI integrations can sit on top of Kubernetes platform capabilities across:
 
 - platform engineering;
